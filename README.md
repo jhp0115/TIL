@@ -6,7 +6,7 @@
 - 그리디
 - 구현
 - [BFS/DFS](./Algorithm/bfs_dfs.md)
-- 정렬
+- [정렬](./Algorithm/sort.md)
 - 이진 탐색
 - 다이나믹 프로그래밍
 - 최단 경로
