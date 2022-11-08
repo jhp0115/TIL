@@ -9,6 +9,7 @@ DFS란 깊이 우선 탐색 알고리즘으로, 그래프의 깊은 곳을 우�
 DFS는 스택이나 재귀함수를 이용하여 구현한다.
 
 ```python
+# 재귀함수로 구현한 DFS.
 def dfs(graph, v, visited):
   visited[v] = True
   print(v)
@@ -32,6 +33,41 @@ visited = [False] * 7
 
 dfs(graph, 1, visited)
 ```
+
+```python
+# 스택으로 구현한 DFS.
+def dfs(start, visited):
+    stack = []
+
+    stack.append(start)
+    visited[start] = True
+
+    while stack:
+        node = stack.pop()
+        print(node)
+        for new_node in graph[node]:
+            if visited[new_node] != True:
+                stack.append(new_node)
+                visited[new_node] = True
+
+
+# 각 노드와 인접한 노드들의 번호를 이차원 배열로 표현.
+# 인덱스 0번은 제외하고 작성.
+graph = [
+    [],
+    [2, 5],
+    [1, 3, 4],  # 2번 노드는 1, 3, 4번 노드와 연결되어 있다.
+    [2],
+    [2],
+    [1, 6],
+    [5]
+]
+
+visited = [False] * 7
+
+dfs(1, visited)
+```
+
 
 # BFS - 너비 우선 탐색
 
