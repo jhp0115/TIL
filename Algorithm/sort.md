@@ -67,7 +67,47 @@ print(array)  # [1, 2, 3, 5, 6]
 
 
 ## 퀵 정렬
-(작성 중)
+### 알고리즘
+`작성 중`
+
+### 예시 코드
+```python
+array: list[int] = [3, 6, 1, 3, 2, 0, 7, 6, 11, 5]
+
+def hoare_quick_sort(array: list[int], start: int, end: int):
+    # 재귀 종료 조건.
+    if end <= start:
+        return
+
+    # 분할.
+    pivot = start  # 리스트 내 범위의 첫 번째 원소를 피봇으로 정한다.
+    left, right = start + 1, end
+    while left <= right:
+        while left <= end and array[left] <= array[pivot]:
+            left += 1
+        # right는 pivot과 교체될 수 있기 때문에 반드시 start 이상이어야 한다.
+        while right > start and array[right] >= array[pivot]:
+            right -= 1
+        
+        # (right < left)가 참이라는 것은
+        # 1. left가 리스트의 범위 밖으로 벗어났을 때와 
+        # 2. right와 left가 리스트 범위 내에서 엇갈렸을 때를 모두 포함한다.
+        # 1번의 경우, right는 end에서 시작해서 왼쪽으로 이동하므로 반드시 right < left이게 된다.
+        if right < left:
+            # cf: left가 범위 밖으로 벗어났든 아니든, right는 pivot보다 작거나 pivot 자기 자신이다.
+            array[pivot], array[right] = array[right], array[pivot]
+            pivot = right
+        else:
+           array[left], array[right] = array[right], array[left]
+
+    # 재귀 호출.
+    hoare_quick_sort(array, start, pivot - 1)
+    hoare_quick_sort(array, pivot + 1, end)
+    
+
+hoare_quick_sort(array, 0, len(array) - 1)
+print('result: ', array)
+```
 
 ## 계수 정렬
 계수 정렬은 데이터의 크기와 범위가 제한적일 때 사용할 수 있는 정렬 방식이다. 예를 들어 학생들의 성적을 정렬할 때처럼 0-100이라는 정수처럼 전체 가능한 원소의 범위가 제한적이고, 점수가 정수여서 원소의 정의역(?)이 무한하지 않을 때 사용가능한 방식이다.  
