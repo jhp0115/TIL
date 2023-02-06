@@ -24,9 +24,11 @@
 ## JavaScript
 - 생성자 함수와 클래스
 - 프로토타입
-- scope, 실행 컨텍스트, 렉시컬 환경
+- scope, 실행 컨텍스트, 렉시컬 환경, 클로저
 - [호이스팅](./JavaScript/hoisting.md)
-- 
+- Promise, async
+- strict mode
+- Iteration, for, for-in, for-of, 배열 순회 메소드 정리
 
 ## TypeScript
 
